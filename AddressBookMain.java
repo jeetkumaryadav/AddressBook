@@ -21,8 +21,7 @@ public class AddressBookMain{
                 con.setEmail(sc.next());
             System.out.println("Add new Contact: (Y/N ):");
             ex=sc.next().charAt(0);
-
-
+            addressBook.add(con);
 
         }
 
