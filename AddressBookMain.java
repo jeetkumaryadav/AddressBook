@@ -2,6 +2,19 @@ import java.util.*;
 public class AddressBookMain{
     List<Contact> addressBook = new ArrayList<Contact>();
     static Scanner sc=new Scanner(System.in);
+
+    public boolean deleteContact(String name) {
+        boolean ret=false;
+        for(Contact c:addressBook) {
+            if(name.equals(c.getFirstName())) {
+                addressBook.remove(c);
+                ret= true;
+            }else
+        ret= false;
+        }
+        return ret;
+    }
+
     public void addContact() {
 
         Contact con = new Contact();
@@ -88,6 +101,16 @@ public class AddressBookMain{
         System.out.println("Enter name of contact to be edited:");
         String nam=sc.next();
         abm.editContact(nam);
+        char xy='Y';
+        while(xy=='Y') {
+            System.out.println("Delete Contact\nEnter name of contact to be deleted");
+            String naam = sc.next();
+            boolean del = abm.deleteContact(naam);
+            if (del == true) System.out.println("Contact Deleted");
+            else System.out.println("Contact not found");
+            System.out.println("Delete Contact:(Y/N)");
+            xy = sc.next().charAt(0);
+        }
 
         }
 
